@@ -1,0 +1,256 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description" content="Accessibility audit dashboard documenting Lighthouse findings for the National Portal of India.">
+
+    <title>Accessibility Audit Dashboard</title>
+
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+
+<body>
+
+    <a href="#main" class="skip-link">Skip to main content</a>
+
+    <header class="header">
+        <div class="brand">
+            <div class="logo" aria-hidden="true">A</div>
+            <div>
+                <p class="eyebrow">WEB QUALITY / TASK 02</p>
+                <h1>Accessibility Audit</h1>
+            </div>
+        </div>
+
+        <span class="status">● Audit Documentation</span>
+    </header>
+
+    <main id="main" class="container">
+
+        <section class="hero">
+            <div>
+                <p class="eyebrow teal">BASELINE ASSESSMENT</p>
+                <h2>Accessibility Overview</h2>
+                <p class="description">
+                    A structured record of potential accessibility barriers
+                    identified during a Lighthouse audit of the National
+                    Portal of India.
+                </p>
+            </div>
+
+            <a class="button secondary"
+               href="https://www.india.gov.in/"
+               target="_blank"
+               rel="noopener noreferrer">
+                Open Audited Website ↗
+            </a>
+        </section>
+
+        <section class="stats" aria-label="Audit summary">
+
+            <article class="stat score-card">
+                <p class="stat-label">Accessibility Score</p>
+                <div class="score">86<span>/100</span></div>
+                <div class="progress">
+                    <div class="progress-fill"></div>
+                </div>
+                <p class="small">Recorded Lighthouse result</p>
+            </article>
+
+            <article class="stat">
+                <p class="stat-label">Recorded Findings</p>
+                <h3 id="total-findings">5</h3>
+                <p class="small">Potential accessibility issues</p>
+            </article>
+
+            <article class="stat">
+                <p class="stat-label">Needs Verification</p>
+                <h3 id="verification-count">2</h3>
+                <p class="small">Manual review recommended</p>
+            </article>
+
+            <article class="stat">
+                <p class="stat-label">Audit Status</p>
+                <h3 class="in-progress">In Progress</h3>
+                <p class="small">Review and evidence pending</p>
+            </article>
+
+        </section>
+
+        <section class="panel">
+
+            <div class="section-heading">
+                <div>
+                    <p class="eyebrow">ISSUE REGISTER</p>
+                    <h2>Accessibility Findings</h2>
+                    <p class="description">
+                        Search findings, filter by status and priority,
+                        and review recommended fixes.
+                    </p>
+                </div>
+
+                <a class="button primary"
+                   href="accessibility-audit-template.csv"
+                   download>
+                    Download CSV ↓
+                </a>
+            </div>
+
+            <div class="filters">
+
+                <label class="search-box">
+                    <span aria-hidden="true">⌕</span>
+                    <span class="visually-hidden">Search findings</span>
+                    <input id="search-input"
+                           type="search"
+                           placeholder="Search issues or components...">
+                </label>
+
+                <label for="status-filter">Status</label>
+                <select id="status-filter">
+                    <option value="all">All Statuses</option>
+                    <option value="Open">Open</option>
+                    <option value="Needs verification">Needs Verification</option>
+                </select>
+
+                <label for="priority-filter">Priority</label>
+                <select id="priority-filter">
+                    <option value="all">All Priorities</option>
+                    <option value="High">High</option>
+                    <option value="Medium">Medium</option>
+                </select>
+
+            </div>
+
+            <div class="table-container">
+                <table>
+                    <caption class="visually-hidden">
+                        Accessibility findings, priorities and statuses
+                    </caption>
+
+                    <thead>
+                        <tr>
+                            <th scope="col">Issue</th>
+                            <th scope="col">Component / WCAG</th>
+                            <th scope="col">Priority</th>
+                            <th scope="col">Status</th>
+                            <th scope="col">Details</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="findings-table">
+                        <tr>
+                            <td colspan="5">Loading findings...</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <p id="results-count" class="small" aria-live="polite">
+                Showing 5 findings
+            </p>
+
+        </section>
+
+        <section class="bottom-grid">
+
+            <article class="panel">
+                <p class="eyebrow">METHODOLOGY</p>
+                <h2>How the Audit Was Conducted</h2>
+
+                <ol class="steps">
+                    <li>
+                        <span class="step-number">01</span>
+                        <div>
+                            <h3>Automated Scan</h3>
+                            <p>
+                                Chrome DevTools Lighthouse was run with
+                                the Accessibility category enabled.
+                            </p>
+                        </div>
+                    </li>
+
+                    <li>
+                        <span class="step-number">02</span>
+                        <div>
+                            <h3>Document Findings</h3>
+                            <p>
+                                Potential issues were recorded in a CSV
+                                issue register.
+                            </p>
+                        </div>
+                    </li>
+
+                    <li>
+                        <span class="step-number">03</span>
+                        <div>
+                            <h3>Manual Verification</h3>
+                            <p>
+                                Keyboard navigation, focus visibility
+                                and assistive technology behaviour
+                                require additional testing.
+                            </p>
+                        </div>
+                    </li>
+                </ol>
+            </article>
+
+            <article class="panel">
+                <p class="eyebrow">NEXT ACTIONS</p>
+                <h2>Recommended Workflow</h2>
+
+                <ul class="checklist">
+                    <li>Verify the findings on the live website.</li>
+                    <li>Capture screenshots of affected elements.</li>
+                    <li>Complete evidence and remediation details.</li>
+                    <li>Document the architecture in README.md.</li>
+                    <li>Upload the project to a public GitHub repository.</li>
+                </ul>
+
+                <div class="notice">
+                    <strong>Important:</strong>
+                    This dashboard documents an accessibility audit.
+                    It does not modify or certify the government website.
+                </div>
+            </article>
+
+        </section>
+
+        <footer>
+            <span>Accessibility Audit Dashboard</span>
+            <span>HTML · CSS · JavaScript</span>
+        </footer>
+
+    </main>
+
+    <dialog id="details-dialog" aria-labelledby="dialog-title">
+
+        <div class="dialog-header">
+            <h2 id="dialog-title">Finding Details</h2>
+
+            <button id="close-dialog"
+                    type="button"
+                    aria-label="Close details">
+                ×
+            </button>
+        </div>
+
+        <div id="dialog-content" class="dialog-content"></div>
+
+        <div class="dialog-footer">
+            <button id="close-details"
+                    type="button"
+                    class="button primary">
+                Close Details
+            </button>
+        </div>
+
+    </dialog>
+
+</body>
+</html>
+```

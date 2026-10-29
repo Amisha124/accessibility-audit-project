@@ -1,0 +1,8 @@
+
+issue_id,page_or_component,wcag_reference,evidence,severity,user_impact,recommended_fix,owner,status
+WEB-001,Top Bar Service List,WCAG 2.1 1.3.1,"Lighthouse flagged div#topBarServiceList with role=listitem outside its required parent role",Medium,"Screen-reader users may have difficulty understanding the intended list structure","Use a suitable list container and semantic HTML list elements",Student,Open
+WEB-002,Header Overlay Text,WCAG 2.1 1.4.3,"Lighthouse reported insufficient color contrast for Avail online Services & Save time",Medium,"Users with low vision may have difficulty reading the text","Adjust foreground or background colors to meet contrast requirements",Student,Open
+WEB-003,Website List Components,WCAG 2.1 1.3.1,"Lighthouse reported list items outside ul ol or menu parent elements",Medium,"Assistive technology users may have difficulty understanding list relationships","Use appropriate semantic list markup",Student,Open
+WEB-004,Interactive Controls,Needs verification,"Lighthouse reported touch targets with insufficient size or spacing",Needs verification,"Users with limited dexterity may have difficulty selecting controls","Inspect affected controls and adjust target size or spacing where needed",Student,Open
+WEB-005,Repeated Links,Needs verification,"Lighthouse listed an identical-links-purpose best-practice audit requiring inspection",Needs verification,"Users may have difficulty understanding link purposes if destinations or actions are unclear","Inspect link names and destinations and clarify purposes where necessary",Student,Open
+

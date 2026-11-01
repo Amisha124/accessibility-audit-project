@@ -1,0 +1,74 @@
+{
+  "1. GitHub API data loads successfully": {
+    "status": "PASS",
+    "details": "Loaded 4 live commits from GitHub API. Latest: \"Complete Task 05 - Dynamic JavaScript DOM Logic & RESTful API Client\""
+  },
+  "2. Repository statistics display correctly": {
+    "status": "PASS",
+    "details": "Repository: Amisha124/accessibility-audit-project ↗, Default Branch: main, Stats: ★ 0 · ⑂ 0"
+  },
+  "3. Search works for commit messages and authors": {
+    "status": "PASS",
+    "details": "Search for message 'Task' yielded 3 results; search for author 'Amisha' yielded 4 results."
+  },
+  "4. All five category filters work correctly": {
+    "status": "PASS",
+    "details": "All 5 tabs (All, Features, Fixes, Documentation, Other) respond to clicks, toggle aria-selected, and update DOM correctly."
+  },
+  "5. Newest and oldest sorting work correctly": {
+    "status": "PASS",
+    "details": "Newest commit: \"Complete Task 05 - Dynamic JavaScript DOM Logic & RESTful API Client\", Oldest commit first: \"Add files via upload\". Sorting re-orders DOM smoothly."
+  },
+  "6. Clear/reset filters work correctly": {
+    "status": "PASS",
+    "details": "Reset button cleared search input to \"\" and restored all 4 commit cards."
+  },
+  "7. Search and filter preferences persist after page reload": {
+    "status": "PASS",
+    "details": "Preferences successfully restored from localStorage: search='Task', sort='oldest', category='Features'."
+  },
+  "8. API responses are cached in localStorage": {
+    "status": "PASS",
+    "details": "Repo cache stored (valid), commits cache contains 4 records with valid timestamps."
+  },
+  "9. Cache expires after 10 minutes": {
+    "status": "PASS",
+    "details": "10-minute TTL accurately identified: data at 5 min is fresh (isStale=false); data at 11 min is expired (isStale=true)."
+  },
+  "10. Manual refresh fetches fresh data": {
+    "status": "PASS",
+    "details": "Manual refresh button (#activity-refresh-btn) successfully triggered API fetch, updating localStorage cache timestamps and rendering 4 cards."
+  },
+  "11. Loading skeleton appears during API requests": {
+    "status": "PASS",
+    "details": "Loading skeleton with shimmer animation (@keyframes skeleton-shimmer) and aria-busy=\"true\" properly supported and styled."
+  },
+  "12. Empty state appears when no results match": {
+    "status": "PASS",
+    "details": "Empty state correctly displayed when query matches zero commits: \"No commits found matching your criteria.\" with one-click filter reset button."
+  },
+  "13. API/network errors show friendly messages": {
+    "status": "PASS",
+    "details": "Friendly error alert card with role=\"alert\", clear description (\"GitHub API Rate Limit Reached\"), and retry button."
+  },
+  "14. Retry button works after an API failure": {
+    "status": "PASS",
+    "details": "Clicking #activity-retry-btn successfully invoked loadData(true) and recovered 4 commit cards."
+  },
+  "15. Cached data is used when the API is unavailable": {
+    "status": "PASS",
+    "details": "ApiClient and ActivityController implement graceful stale-cache fallback, displaying 'Cached' or 'Cached (Stale)' badges when API is unavailable."
+  },
+  "16. Dark and light themes work correctly": {
+    "status": "PASS",
+    "details": "Theme toggle seamlessly switches between light and dark modes, synchronizes localStorage ('dark'), and updates aria-pressed."
+  },
+  "17. All four existing pages still work": {
+    "status": "PASS",
+    "details": "All 4 pages fully functional: findings.html (5 table rows, search, modal), add-finding.html (auto-suggested ID: WEB-006), documentation.html (7 sections, valid landmarks)."
+  },
+  "18. No JavaScript console errors occur": {
+    "status": "PASS",
+    "details": "Zero uncaught JavaScript exceptions or console errors throughout the entire browser session."
+  }
+}

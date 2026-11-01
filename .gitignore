@@ -9,6 +9,9 @@ desktop.ini
 *.log
 npm-debug.log*
 
+# Test artifacts
+.chrome-test-profile/
+
 # Node modules (if any installed in the future)
 node_modules/
 

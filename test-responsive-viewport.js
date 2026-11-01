@@ -54,3 +54,4 @@ pages.forEach(page => {
 console.log('\n====================================================');
 console.log(' All viewports verified for responsive layout adaptation!');
 console.log('====================================================\n');
+

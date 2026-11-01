@@ -781,6 +781,9 @@ function initTheme() {
 
 // Global initialization on DOM ready
 document.addEventListener("DOMContentLoaded", function () {
+    if (typeof window !== "undefined" && window.__ACCESSIBILITY_APP_ACTIVE__) {
+        return; // app.js handles DOM initialization in Task 05
+    }
     initTheme();
     initNavigation();
     initModalListeners();

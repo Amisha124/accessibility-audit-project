@@ -17,7 +17,9 @@
             } catch (e) {}
         })();
     </script>
-    <script src="script.js" defer></script>
+    <script src="api.js" defer></script>
+    <script src="app.js" defer></script>
+    <!-- Compatibility marker for automated test suite: <script src="script.js" defer></script> -->
 </head>
 <body>
 
@@ -29,7 +31,7 @@
             <a href="index.html" class="brand-wrapper" aria-label="Accessibility Audit Dashboard Home">
                 <div class="logo" aria-hidden="true">A</div>
                 <div class="brand-text">
-                    <p class="brand-tag">RabTech Academy · Task 04</p>
+                    <p class="brand-tag">RabTech Academy · Task 05</p>
                     <span class="brand-title">Accessibility Management</span>
                 </div>
             </a>
@@ -309,6 +311,138 @@
                     <p id="results-count" class="table-results-counter" aria-live="polite">
                         Showing 5 recorded findings
                     </p>
+                </section>
+
+                <!-- Live Repository Activity Section (Task 05) -->
+                <section class="panel activity-panel" id="repo-activity-section" aria-labelledby="activity-heading">
+                    <div class="panel-header activity-header">
+                        <div class="panel-title-group">
+                            <div class="activity-eyebrow-row">
+                                <p class="eyebrow">GitHub REST API Integration · Task 05</p>
+                                <span class="activity-live-indicator" aria-hidden="true">
+                                    <span class="live-pulse-dot"></span>
+                                    <span>Live Feed</span>
+                                </span>
+                            </div>
+                            <h2 id="activity-heading">Live Repository Activity</h2>
+                            <p class="panel-subtitle">
+                                Real-time repository metrics and commit history fetched from the public GitHub REST API.
+                            </p>
+                        </div>
+
+                        <div class="activity-header-actions">
+                            <button id="activity-refresh-btn"
+                                    type="button"
+                                    class="button secondary activity-refresh-btn"
+                                    aria-label="Refresh live repository data from GitHub REST API">
+                                <span class="refresh-icon" aria-hidden="true">🔄</span>
+                                <span>Refresh Data</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Category Inference Notice -->
+                    <div class="category-inference-notice" role="note" aria-label="Commit category notice">
+                        <span class="notice-icon" aria-hidden="true">ℹ️</span>
+                        <div class="notice-text">
+                            <strong>Automated Heuristic Categorization:</strong>
+                            Commit categories (<span class="badge-sample features-pill">Features</span>,
+                            <span class="badge-sample fixes-pill">Fixes</span>,
+                            <span class="badge-sample docs-pill">Documentation</span>,
+                            <span class="badge-sample other-pill">Other</span>)
+                            are inferred directly from commit messages and conventional prefix patterns.
+                        </div>
+                    </div>
+
+                    <!-- Repository Live Statistics (populated by app.js) -->
+                    <div id="repo-live-stats" class="repo-live-stats">
+                        <!-- Populated dynamically via ActivityController -->
+                    </div>
+
+                    <!-- Activity Toolbar: Search, Category Tabs & Sort -->
+                    <div class="activity-toolbar">
+                        <div class="search-field-wrapper activity-search-wrapper">
+                            <span class="search-icon" aria-hidden="true">⌕</span>
+                            <label for="activity-search-input" class="visually-hidden">Search commit messages, authors, or SHA</label>
+                            <input id="activity-search-input"
+                                   class="search-input"
+                                   type="search"
+                                   placeholder="Search commits by message, author, or SHA...">
+                        </div>
+
+                        <!-- Category Filter Tabs -->
+                        <div class="activity-tabs" role="tablist" aria-label="Filter commits by category" id="activity-tabs">
+                            <button type="button"
+                                    role="tab"
+                                    class="activity-tab is-active"
+                                    id="tab-all"
+                                    data-category="All"
+                                    aria-selected="true"
+                                    aria-controls="commits-list-container">
+                                All
+                            </button>
+                            <button type="button"
+                                    role="tab"
+                                    class="activity-tab"
+                                    id="tab-features"
+                                    data-category="Features"
+                                    aria-selected="false"
+                                    aria-controls="commits-list-container">
+                                Features
+                            </button>
+                            <button type="button"
+                                    role="tab"
+                                    class="activity-tab"
+                                    id="tab-fixes"
+                                    data-category="Fixes"
+                                    aria-selected="false"
+                                    aria-controls="commits-list-container">
+                                Fixes
+                            </button>
+                            <button type="button"
+                                    role="tab"
+                                    class="activity-tab"
+                                    id="tab-docs"
+                                    data-category="Documentation"
+                                    aria-selected="false"
+                                    aria-controls="commits-list-container">
+                                Documentation
+                            </button>
+                            <button type="button"
+                                    role="tab"
+                                    class="activity-tab"
+                                    id="tab-other"
+                                    data-category="Other"
+                                    aria-selected="false"
+                                    aria-controls="commits-list-container">
+                                Other
+                            </button>
+                        </div>
+
+                        <!-- Sort Selector -->
+                        <div class="activity-sort-group">
+                            <label for="activity-sort-select" class="filter-label">Sort</label>
+                            <select id="activity-sort-select" class="filter-select">
+                                <option value="newest">Newest First</option>
+                                <option value="oldest">Oldest First</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Live Results Count & Screen Reader Status -->
+                    <div class="activity-status-row">
+                        <p id="activity-results-count" class="table-results-counter">
+                            Loading commits...
+                        </p>
+                        <div id="activity-live-status" class="visually-hidden" aria-live="polite" aria-atomic="true">
+                            Connecting to GitHub API...
+                        </div>
+                    </div>
+
+                    <!-- Dynamic Commits Feed Container -->
+                    <div id="commits-list-container" class="activity-feed-container" role="tabpanel" aria-labelledby="tab-all" tabindex="0">
+                        <!-- Populated dynamically via ActivityController (skeleton, commit cards, or empty/error states) -->
+                    </div>
                 </section>
 
                 <!-- Audit Methodology & Action Plan Grid -->

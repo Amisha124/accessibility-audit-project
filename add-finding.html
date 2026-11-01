@@ -6,6 +6,18 @@
     <meta name="description" content="Log a new accessibility finding for the National Portal of India audit with accessible form controls and instant persistence.">
     <title>Add New Finding | Accessibility Management Dashboard</title>
     <link rel="stylesheet" href="style.css">
+    <script>
+        (function () {
+            try {
+                var saved = localStorage.getItem("accessibility_audit_theme");
+                var prefersDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+                if (saved === "dark" || (!saved && prefersDark)) {
+                    document.documentElement.setAttribute("data-theme", "dark");
+                }
+            } catch (e) {}
+        })();
+    </script>
+
     <script src="script.js" defer></script>
 </head>
 <body>
@@ -18,7 +30,7 @@
             <a href="index.html" class="brand-wrapper" aria-label="Accessibility Audit Dashboard Home">
                 <div class="logo" aria-hidden="true">A</div>
                 <div class="brand-text">
-                    <p class="brand-tag">RabTech Academy · Task 03</p>
+                    <p class="brand-tag">RabTech Academy · Task 04</p>
                     <span class="brand-title">Accessibility Management</span>
                 </div>
             </a>
@@ -28,6 +40,17 @@
                     <span class="status-indicator-dot" aria-hidden="true"></span>
                     Issue Intake
                 </span>
+                <button id="theme-toggle"
+                        type="button"
+                        class="theme-toggle"
+                        aria-label="Switch to dark theme"
+                        aria-pressed="false">
+                    <span class="theme-icon light-icon" aria-hidden="true">☀️</span>
+                    <span class="theme-icon dark-icon" aria-hidden="true">🌙</span>
+                    <span class="theme-label visually-hidden">Toggle theme</span>
+                </button>
+
+
 
                 <button id="menu-toggle"
                         type="button"

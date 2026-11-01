@@ -6,6 +6,18 @@
     <meta name="description" content="Comprehensive audit documentation, WCAG 2.1 mapping, Lighthouse methodology, and screenshots for the National Portal of India audit.">
     <title>Audit Documentation &amp; Methodology | RabTech Academy</title>
     <link rel="stylesheet" href="style.css">
+    <script>
+        (function () {
+            try {
+                var saved = localStorage.getItem("accessibility_audit_theme");
+                var prefersDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+                if (saved === "dark" || (!saved && prefersDark)) {
+                    document.documentElement.setAttribute("data-theme", "dark");
+                }
+            } catch (e) {}
+        })();
+    </script>
+
     <script src="script.js" defer></script>
 </head>
 <body>
@@ -18,7 +30,7 @@
             <a href="index.html" class="brand-wrapper" aria-label="Accessibility Audit Dashboard Home">
                 <div class="logo" aria-hidden="true">A</div>
                 <div class="brand-text">
-                    <p class="brand-tag">RabTech Academy · Task 03</p>
+                    <p class="brand-tag">RabTech Academy · Task 04</p>
                     <span class="brand-title">Accessibility Management</span>
                 </div>
             </a>
@@ -28,6 +40,17 @@
                     <span class="status-indicator-dot" aria-hidden="true"></span>
                     Audit Reference
                 </span>
+                <button id="theme-toggle"
+                        type="button"
+                        class="theme-toggle"
+                        aria-label="Switch to dark theme"
+                        aria-pressed="false">
+                    <span class="theme-icon light-icon" aria-hidden="true">☀️</span>
+                    <span class="theme-icon dark-icon" aria-hidden="true">🌙</span>
+                    <span class="theme-label visually-hidden">Toggle theme</span>
+                </button>
+
+
 
                 <button id="menu-toggle"
                         type="button"
@@ -272,7 +295,7 @@
                     </div>
                 </section>
 
-                <!-- Section 5: Accessible Component Architecture (Task 03 Principles) -->
+                <!-- Section 5: Accessible Component Architecture -->
                 <section class="doc-section" aria-labelledby="architecture-heading">
                     <h2 id="architecture-heading">5. Accessible Component Architecture (Task 03)</h2>
                     <p>
@@ -301,10 +324,61 @@
                             </ul>
                         </div>
                     </div>
+                </section>
+
+                <!-- Section 6: Responsive Design Tokens & Mobile-First Architecture (Task 04) -->
+                <section class="doc-section" aria-labelledby="task04-heading">
+                    <h2 id="task04-heading">6. Responsive Design Tokens &amp; Mobile-First Architecture (Task 04)</h2>
+                    <p>
+                        Task 04 upgrades the system to a mobile-first responsive architecture powered by CSS custom properties
+                        (design tokens), adaptive breakpoints (320px, 768px, 1024px, 1440px), and persistent dark/light theme switching:
+                    </p>
+
+                    <div class="doc-comparison-grid">
+                        <div class="doc-card">
+                            <h3>Design Tokens &amp; Theme Engine</h3>
+                            <ul>
+                                <li><strong>Color System:</strong> Semantic primary, secondary, status, canvas, and surface tokens with high WCAG AAA/AA contrast.</li>
+                                <li><strong>Typography &amp; Spacing:</strong> Modular scale tokens (<code>--text-xs</code> through <code>--text-4xl</code>) and 8pt/4pt spacing grid tokens (<code>--space-1</code> through <code>--space-16</code>).</li>
+                                <li><strong>Dual Theme Architecture:</strong> Light mode default with full <code>[data-theme="dark"]</code> palette, system preference detection, and persistent <code>localStorage</code> synchronization.</li>
+                                <li><strong>Subtle Glassmorphism:</strong> Frosted glass header bar and dialog layers utilizing backdrop blur effects.</li>
+                            </ul>
+                        </div>
+
+                        <div class="doc-card">
+                            <h3>Mobile-First Responsive Breakpoints</h3>
+                            <ul>
+                                <li><strong>320px (Base Mobile):</strong> 1-column layouts, touch targets &ge; 44px, and scrollable accessible table regions with no horizontal viewport overflow.</li>
+                                <li><strong>768px (Tablet):</strong> 2-column grid adaptation, flexible filter toolbars, and expanded form layouts.</li>
+                                <li><strong>1024px (Desktop):</strong> Sticky desktop sidebar, 4-column metric cards, and spacious content canvases.</li>
+                                <li><strong>1440px (Wide Desktop):</strong> Expanded container max-width (1360px) and refined typography scales.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="screenshot-gallery">
+                        <figure class="screenshot-figure">
+                            <img src="screenshots/responsive-mobile-320px.png"
+                                 alt="Mobile layout rendered at 320px width showing stacked cards and touch-friendly controls.">
+                            <figcaption>Figure 4: Mobile-first responsive layout (320px viewport).</figcaption>
+                        </figure>
+
+                        <figure class="screenshot-figure">
+                            <img src="screenshots/responsive-tablet-768px.png"
+                                 alt="Tablet layout rendered at 768px width showing two-column stat cards and responsive toolbar.">
+                            <figcaption>Figure 5: Tablet responsive layout (768px viewport).</figcaption>
+                        </figure>
+
+                        <figure class="screenshot-figure">
+                            <img src="screenshots/theme-dark-mode-dashboard.png"
+                                 alt="Dashboard rendered in dark theme with high contrast teal accents and dark surfaces.">
+                            <figcaption>Figure 6: High-contrast Dark Theme Dashboard.</figcaption>
+                        </figure>
+                    </div>
 
                     <div class="notice-box">
                         <strong>Academic Disclaimer:</strong>
-                        This project is created strictly for educational purposes as part of RabTech Academy Internship Task 03.
+                        This project is created strictly for educational purposes as part of RabTech Academy Internship Tasks 03 &amp; 04.
                         The findings documented herein represent baseline automated scans and student observations.
                         This project does not modify, certify, or represent an official endorsement of the National Portal of India or any government agency.
                     </div>

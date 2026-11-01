@@ -428,14 +428,30 @@ recordCheck(
     !redundantAriaFound
 );
 
-// 11. Responsive layout works on mobile, tablet and desktop
-console.log('\n>>> CHECK 11: Responsive layout');
+// 11. Responsive layout works on mobile, tablet and desktop (Mobile-First Architecture)
+console.log('\n>>> CHECK 11: Mobile-First Responsive Layout & Theme Architecture');
 recordCheck(
     '11. Responsive Layout',
-    'style.css defines responsive media queries for tablet (1024px, 860px) and mobile (640px)',
-    styleContent.includes('@media (max-width: 1024px)') &&
-    styleContent.includes('@media (max-width: 860px)') &&
-    styleContent.includes('@media (max-width: 640px)')
+    'style.css defines mobile-first progressive breakpoints (480px, 768px, 1024px, 1440px)',
+    styleContent.includes('@media (min-width: 480px)') &&
+    styleContent.includes('@media (min-width: 768px)') &&
+    styleContent.includes('@media (min-width: 1024px)') &&
+    styleContent.includes('@media (min-width: 1440px)')
+);
+
+recordCheck(
+    '11. Responsive Layout',
+    'style.css defines comprehensive :root design tokens and [data-theme="dark"] variables',
+    styleContent.includes(':root {') && styleContent.includes('[data-theme="dark"]') && styleContent.includes('--space-1:') && styleContent.includes('--radius-md:')
+);
+
+recordCheck(
+    '11. Responsive Layout',
+    'Accessible theme toggle button (#theme-toggle) with aria-pressed is present on all 4 pages',
+    pages.every(p => {
+        const c = fs.readFileSync(path.join(__dirname, p), 'utf8');
+        return c.includes('id="theme-toggle"') && c.includes('class="theme-toggle"');
+    })
 );
 
 recordCheck(
@@ -478,7 +494,13 @@ const requiredProjectFiles = [
     'accessibility-audit-template.csv',
     'screenshots/accessibility-dashboard-overview.png',
     'screenshots/lighthouse-accessibility-issues.png',
-    'screenshots/lighthouse-accessibility-score.png'
+    'screenshots/lighthouse-accessibility-score.png',
+    'screenshots/responsive-mobile-320px.png',
+    'screenshots/responsive-tablet-768px.png',
+    'screenshots/responsive-desktop-1024px.png',
+    'screenshots/responsive-wide-1440px.png',
+    'screenshots/theme-dark-mode-dashboard.png',
+    'screenshots/theme-light-mode-dashboard.png'
 ];
 
 let allOriginalFilesPresent = true;
@@ -491,7 +513,7 @@ requiredProjectFiles.forEach(f => {
 
 recordCheck(
     '13. File Preservation',
-    'All original project files, CSV template, and screenshot assets are preserved intact',
+    'All original and Task 04 project files, screenshots, and CSV templates are preserved intact',
     allOriginalFilesPresent
 );
 

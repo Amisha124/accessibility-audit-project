@@ -715,8 +715,73 @@ window.resetFindingsToBaseline = function () {
     location.reload();
 };
 
+const THEME_STORAGE_KEY = "accessibility_audit_theme";
+
+/**
+ * Initialize theme toggle (Dark / Light mode).
+ */
+function initTheme() {
+    const themeToggle = document.getElementById("theme-toggle");
+
+    // Determine active theme
+    let savedTheme = null;
+    try {
+        savedTheme = localStorage.getItem(THEME_STORAGE_KEY);
+    } catch (e) {
+        // ignore
+    }
+
+    const prefersDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+    const initialTheme = savedTheme ? savedTheme : (prefersDark ? "dark" : "light");
+
+    function applyTheme(theme) {
+        if (theme === "dark") {
+            document.documentElement.setAttribute("data-theme", "dark");
+            if (themeToggle) {
+                themeToggle.setAttribute("aria-pressed", "true");
+                themeToggle.setAttribute("aria-label", "Switch to light theme");
+            }
+        } else {
+            document.documentElement.removeAttribute("data-theme");
+            if (themeToggle) {
+                themeToggle.setAttribute("aria-pressed", "false");
+                themeToggle.setAttribute("aria-label", "Switch to dark theme");
+            }
+        }
+    }
+
+    applyTheme(initialTheme);
+
+    if (themeToggle) {
+        themeToggle.addEventListener("click", function () {
+            const isDark = document.documentElement.getAttribute("data-theme") === "dark";
+            const newTheme = isDark ? "light" : "dark";
+            applyTheme(newTheme);
+            try {
+                localStorage.setItem(THEME_STORAGE_KEY, newTheme);
+            } catch (e) {
+                console.warn("Unable to save theme preference.", e);
+            }
+        });
+    }
+
+    // Listen to system theme changes if user hasn't explicitly set a preference
+    if (window.matchMedia) {
+        window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", function (e) {
+            try {
+                if (!localStorage.getItem(THEME_STORAGE_KEY)) {
+                    applyTheme(e.matches ? "dark" : "light");
+                }
+            } catch (err) {
+                // ignore
+            }
+        });
+    }
+}
+
 // Global initialization on DOM ready
 document.addEventListener("DOMContentLoaded", function () {
+    initTheme();
     initNavigation();
     initModalListeners();
     initFindingsTable();

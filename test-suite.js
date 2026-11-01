@@ -1,7 +1,8 @@
 /**
  * Comprehensive Automated Test Suite
  * Tests multi-page architecture, semantic HTML5, navigation links,
- * accessible forms, modal dialogs, data integrity, and JavaScript controllers.
+ * accessible forms, modal dialogs, data integrity, JavaScript controllers,
+ * mobile-first design tokens, theme switching, and responsive breakpoints.
  */
 
 const fs = require('fs');
@@ -13,9 +14,18 @@ const ASSETS = [
     'script.js',
     'README.md',
     'accessibility-audit-template.csv',
+    // Original screenshots
     'screenshots/accessibility-dashboard-overview.png',
     'screenshots/lighthouse-accessibility-issues.png',
-    'screenshots/lighthouse-accessibility-score.png'
+    'screenshots/lighthouse-accessibility-score.png',
+    // Task 04 Responsive layout screenshots
+    'screenshots/responsive-mobile-320px.png',
+    'screenshots/responsive-tablet-768px.png',
+    'screenshots/responsive-desktop-1024px.png',
+    'screenshots/responsive-wide-1440px.png',
+    // Task 04 Theme screenshots
+    'screenshots/theme-dark-mode-dashboard.png',
+    'screenshots/theme-light-mode-dashboard.png'
 ];
 
 let totalTests = 0;
@@ -35,6 +45,7 @@ function assert(condition, message) {
 
 console.log('====================================================');
 console.log(' ACCESSIBILITY AUDIT DASHBOARD - TEST SUITE RUNNER  ');
+console.log(' Task 04: Design Tokens & Mobile-First Architecture ');
 console.log('====================================================\n');
 
 // TEST SUITE 1: Required Files & Asset Existence
@@ -69,6 +80,12 @@ PAGES.forEach(page => {
     assert(
         content.includes('<aside') && content.includes('id="app-sidebar"'),
         `[${page}] Contains <aside id="app-sidebar"> navigation landmark`
+    );
+
+    // Theme toggle button exists
+    assert(
+        content.includes('id="theme-toggle"') && content.includes('class="theme-toggle"'),
+        `[${page}] Contains accessible theme toggle button (#theme-toggle)`
     );
 
     // Check all internal navigation links point to existing files
@@ -151,7 +168,7 @@ assert(fieldsetCount >= 3 && legendCount >= 3, `Form groups controls into at lea
 assert(addFindingHtml.includes('id="error-summary"') && addFindingHtml.includes('role="alert"'), 'Form includes error summary container with role="alert"');
 assert(addFindingHtml.includes('id="success-banner"') && addFindingHtml.includes('role="status"'), 'Form includes live success banner with role="status"');
 
-// TEST SUITE 5: Preserved Data & JavaScript Logic
+// TEST SUITE 5: Preserved Data & JavaScript Controllers
 console.log('\n--- TEST SUITE 5: Baseline Data Preservation & JS Controller ---');
 const scriptContent = fs.readFileSync(path.join(__dirname, 'script.js'), 'utf8');
 
@@ -173,14 +190,38 @@ assert(scriptContent.includes('exportFindingsToCSV'), 'script.js implements expo
 assert(scriptContent.includes('openDetailsDialog') && scriptContent.includes('closeDetailsDialog'), 'script.js implements modal management');
 assert(scriptContent.includes('"Escape"'), 'script.js handles keyboard Escape key to close dialog and drawer');
 
-// TEST SUITE 6: Styling, Design Tokens & Contrast (style.css)
-console.log('\n--- TEST SUITE 6: CSS Design Tokens, Contrast & Responsiveness ---');
+// Theme controller in script.js
+assert(scriptContent.includes('initTheme'), 'script.js implements initTheme function');
+assert(scriptContent.includes('data-theme'), 'script.js sets data-theme attribute on documentElement');
+assert(scriptContent.includes('THEME_STORAGE_KEY'), 'script.js synchronizes theme with localStorage');
+
+// TEST SUITE 6: Mobile-First CSS, Design Tokens & Responsive Architecture
+console.log('\n--- TEST SUITE 6: Design Tokens & Mobile-First CSS Architecture ---');
 const styleContent = fs.readFileSync(path.join(__dirname, 'style.css'), 'utf8');
 
+// Design Tokens
+assert(styleContent.includes(':root {'), 'style.css defines :root design tokens');
+assert(styleContent.includes('--primary:'), 'style.css defines --primary color token');
+assert(styleContent.includes('--bg-canvas:'), 'style.css defines --bg-canvas background token');
+assert(styleContent.includes('--bg-surface:'), 'style.css defines --bg-surface token');
+assert(styleContent.includes('--space-1:') && styleContent.includes('--space-16:'), 'style.css defines comprehensive spacing tokens (--space-1 to --space-16)');
+assert(styleContent.includes('--radius-sm:') && styleContent.includes('--radius-lg:'), 'style.css defines border radius tokens');
+assert(styleContent.includes('--shadow-sm:') && styleContent.includes('--shadow-lg:'), 'style.css defines shadow elevation tokens');
+assert(styleContent.includes('--transition-fast:'), 'style.css defines transition tokens');
+
+// Dark Theme Tokens
+assert(styleContent.includes('[data-theme="dark"]'), 'style.css implements [data-theme="dark"] theme selector');
+
+// Mobile-First Breakpoints
+assert(styleContent.includes('@media (min-width: 480px)'), 'style.css defines mobile-first breakpoint at min-width: 480px');
+assert(styleContent.includes('@media (min-width: 768px)'), 'style.css defines mobile-first breakpoint at min-width: 768px (Tablet)');
+assert(styleContent.includes('@media (min-width: 1024px)'), 'style.css defines mobile-first breakpoint at min-width: 1024px (Desktop)');
+assert(styleContent.includes('@media (min-width: 1440px)'), 'style.css defines mobile-first breakpoint at min-width: 1440px (Wide Desktop)');
+
+// Accessibility & Touch Target Styling
 assert(styleContent.includes(':focus-visible'), 'style.css specifies :focus-visible indicators for accessible keyboard navigation');
 assert(styleContent.includes('--focus-ring:'), 'style.css defines custom focus ring token');
-assert(styleContent.includes('--primary:'), 'style.css defines primary brand token');
-assert(styleContent.includes('@media (max-width:'), 'style.css includes responsive breakpoints for tablet and mobile');
+assert(styleContent.includes('min-height: 44px') || styleContent.includes('min-height: 42px'), 'style.css specifies touch-friendly min-height for interactive controls');
 assert(styleContent.includes('prefers-reduced-motion'), 'style.css respects prefers-reduced-motion media query');
 assert(styleContent.includes('dialog.details-modal'), 'style.css styles native HTML5 <dialog> modal');
 
@@ -194,4 +235,3 @@ if (failedTests > 0) {
 } else {
     console.log('\n🎉 ALL TESTS PASSED SUCCESSFULLY!\n');
 }
-

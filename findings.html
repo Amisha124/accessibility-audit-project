@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Detailed register of accessibility findings for the National Portal of India with search, filtering, and export capabilities.">
+    <title>Accessibility Findings Register | RabTech Academy</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+
+    <a href="#main" class="skip-link">Skip to main content</a>
+
+    <!-- Top Application Header -->
+    <header class="app-header">
+        <div class="app-header-inner">
+            <a href="index.html" class="brand-wrapper" aria-label="Accessibility Audit Dashboard Home">
+                <div class="logo" aria-hidden="true">A</div>
+                <div class="brand-text">
+                    <p class="brand-tag">RabTech Academy · Task 03</p>
+                    <span class="brand-title">Accessibility Management</span>
+                </div>
+            </a>
+
+            <div class="header-actions">
+                <span class="status-badge">
+                    <span class="status-indicator-dot" aria-hidden="true"></span>
+                    Issue Register
+                </span>
+
+                <button id="menu-toggle"
+                        type="button"
+                        class="menu-toggle"
+                        aria-expanded="false"
+                        aria-controls="app-sidebar"
+                        aria-label="Toggle navigation menu">
+                    <span class="menu-icon" aria-hidden="true">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Application Shell Layout -->
+    <div class="app-layout">
+
+        <!-- Mobile Backdrop Overlay -->
+        <div id="sidebar-backdrop" class="sidebar-backdrop" aria-hidden="true"></div>
+
+        <!-- Sidebar Navigation Landmark -->
+        <aside id="app-sidebar" class="app-sidebar" aria-label="Sidebar Navigation">
+            <div class="sidebar-nav-section">
+                <p class="sidebar-label">Navigation</p>
+                <nav class="sidebar-nav" aria-label="Primary Navigation">
+                    <ul class="sidebar-menu">
+                        <li>
+                            <a href="index.html" class="sidebar-link">
+                                <span class="icon" aria-hidden="true">📊</span>
+                                <span>Dashboard</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="findings.html" class="sidebar-link" aria-current="page">
+                                <span class="icon" aria-hidden="true">📋</span>
+                                <span>Findings Register</span>
+                                <span class="nav-counter"><span class="nav-findings-count">5</span><span class="visually-hidden"> recorded findings</span></span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="add-finding.html" class="sidebar-link">
+                                <span class="icon" aria-hidden="true">➕</span>
+                                <span>Add New Finding</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="documentation.html" class="sidebar-link">
+                                <span class="icon" aria-hidden="true">📖</span>
+                                <span>Audit Documentation</span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+
+            <div class="sidebar-footer">
+                <div class="sidebar-audit-card">
+                    <h3>Audit Register</h3>
+                    <p>India.gov.in Baseline Findings</p>
+                    <div class="audit-meta-row">
+                        <span>Lighthouse Score</span>
+                        <span class="audit-score-pill">86 / 100</span>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content Area Landmark -->
+        <main id="main" class="app-main" tabindex="-1">
+            <div class="main-content-container">
+
+                <!-- Page Header Hero Section -->
+                <section class="page-hero" aria-labelledby="findings-heading">
+                    <div class="hero-content">
+                        <p class="eyebrow">Issue Management · Task 03</p>
+                        <h1 id="findings-heading">Accessibility Findings Register</h1>
+                        <p class="page-description">
+                            Browse, search, and filter recorded accessibility barriers identified on the National Portal
+                            of India. Inspect detailed WCAG 2.1 mapping, evidence, user impacts, and remediation advice.
+                        </p>
+                    </div>
+
+                    <div class="hero-actions">
+                        <a href="add-finding.html" class="button primary">
+                            ➕ Add New Finding
+                        </a>
+                        <button type="button" id="export-csv-btn" class="button secondary">
+                            Export CSV ↓
+                        </button>
+                        <a href="accessibility-audit-template.csv" class="button outline-teal" download>
+                            Download Baseline CSV
+                        </a>
+                    </div>
+                </section>
+
+                <!-- Full Issue Register Panel -->
+                <section class="panel" aria-labelledby="register-table-heading">
+                    <div class="panel-header">
+                        <div class="panel-title-group">
+                            <p class="eyebrow">Live Data Register</p>
+                            <h2 id="register-table-heading">Recorded Issues &amp; Remediations</h2>
+                            <p>Filter by issue status or priority, or search by keyword across all finding attributes.</p>
+                        </div>
+                    </div>
+
+                    <!-- Filter Toolbar -->
+                    <div class="table-toolbar">
+                        <div class="search-field-wrapper">
+                            <span class="search-icon" aria-hidden="true">⌕</span>
+                            <label for="search-input" class="visually-hidden">Search findings by keyword</label>
+                            <input id="search-input"
+                                   class="search-input"
+                                   type="search"
+                                   placeholder="Search by ID, component, WCAG, impact, or fix...">
+                        </div>
+
+                        <div class="filter-group">
+                            <label for="status-filter" class="filter-label">Status</label>
+                            <select id="status-filter" class="filter-select">
+                                <option value="all">All Statuses</option>
+                                <option value="Open">Open</option>
+                                <option value="Needs verification">Needs Verification</option>
+                                <option value="In Progress">In Progress</option>
+                                <option value="Resolved">Resolved</option>
+                            </select>
+                        </div>
+
+                        <div class="filter-group">
+                            <label for="priority-filter" class="filter-label">Priority</label>
+                            <select id="priority-filter" class="filter-select">
+                                <option value="all">All Priorities</option>
+                                <option value="High">High</option>
+                                <option value="Medium">Medium</option>
+                                <option value="Low">Low</option>
+                            </select>
+                        </div>
+
+                        <button id="reset-filters" type="button" class="reset-filters-btn">
+                            Reset Filters
+                        </button>
+                    </div>
+
+                    <!-- Accessible Data Table -->
+                    <div class="table-responsive-wrapper" role="region" aria-label="Accessibility findings data table" tabindex="0">
+                        <table class="data-table">
+                            <caption class="visually-hidden">
+                                Complete register of accessibility issues with ID, title, component, WCAG criterion, priority, status, and details action
+                            </caption>
+                            <thead>
+                                <tr>
+                                    <th scope="col">Issue ID &amp; Title</th>
+                                    <th scope="col">Component &amp; WCAG Reference</th>
+                                    <th scope="col">Priority</th>
+                                    <th scope="col">Status</th>
+                                    <th scope="col">Details</th>
+                                </tr>
+                            </thead>
+                            <tbody id="findings-table">
+                                <tr>
+                                    <td colspan="5" class="empty-state-row">Loading accessibility findings...</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <p id="results-count" class="table-results-counter" aria-live="polite">
+                        Showing 5 recorded findings
+                    </p>
+                </section>
+
+                <!-- Information Grid: WCAG Criteria Breakdown & Disclaimer -->
+                <div class="cards-grid">
+                    <section class="panel" aria-labelledby="wcag-breakdown-heading">
+                        <p class="eyebrow">WCAG Mapping</p>
+                        <h2 id="wcag-breakdown-heading">Governing Accessibility Criteria</h2>
+                        <ul class="methodology-steps">
+                            <li class="methodology-step-item">
+                                <span class="methodology-number" aria-hidden="true">1.3</span>
+                                <div class="methodology-step-body">
+                                    <h3>1.3.1 Info and Relationships (Level A)</h3>
+                                    <p>Information, structure, and relationships conveyed through presentation can be programmatically determined (List containers, ARIA parent/child roles).</p>
+                                </div>
+                            </li>
+                            <li class="methodology-step-item">
+                                <span class="methodology-number" aria-hidden="true">1.4</span>
+                                <div class="methodology-step-body">
+                                    <h3>1.4.3 Contrast (Minimum) (Level AA)</h3>
+                                    <p>Text visual presentation must have a contrast ratio of at least 4.5:1 for normal text and 3:1 for large text.</p>
+                                </div>
+                            </li>
+                            <li class="methodology-step-item">
+                                <span class="methodology-number" aria-hidden="true">2.5</span>
+                                <div class="methodology-step-body">
+                                    <h3>2.5.5 / 2.5.8 Target Size &amp; Spacing</h3>
+                                    <p>Pointer inputs must have adequate touch target dimensions and spacing to prevent accidental activation on touchscreen devices.</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </section>
+
+                    <section class="panel" aria-labelledby="status-definitions-heading">
+                        <p class="eyebrow">Classification Reference</p>
+                        <h2 id="status-definitions-heading">Status &amp; Severity Guidelines</h2>
+                        <ul class="methodology-steps">
+                            <li class="methodology-step-item">
+                                <span class="methodology-number" aria-hidden="true">●</span>
+                                <div class="methodology-step-body">
+                                    <h3>Open (High Priority)</h3>
+                                    <p>Confirmed automated Lighthouse finding that directly causes assistive technology confusion or readability barriers.</p>
+                                </div>
+                            </li>
+                            <li class="methodology-step-item">
+                                <span class="methodology-number" aria-hidden="true">●</span>
+                                <div class="methodology-step-body">
+                                    <h3>Needs Verification (Medium Priority)</h3>
+                                    <p>Heuristic or best-practice alert that requires manual cross-browser and assistive tech verification to confirm severity.</p>
+                                </div>
+                            </li>
+                        </ul>
+
+                        <div class="notice-box">
+                            <strong>Data Integrity Notice:</strong>
+                            Findings presented in this register reflect recorded observations from Chrome DevTools Lighthouse and baseline manual reviews. They serve as an academic remediation backlog for RabTech Academy Internship Task 03.
+                        </div>
+                    </section>
+                </div>
+
+            </div>
+        </main>
+    </div>
+
+    <!-- Reusable Accessible Modal Dialog for Finding Details -->
+    <dialog id="details-dialog" class="details-modal" aria-labelledby="dialog-title">
+        <div class="modal-header">
+            <h2 id="dialog-title">Finding Details</h2>
+            <button id="close-dialog"
+                    type="button"
+                    class="modal-close-btn"
+                    aria-label="Close details dialog">
+                &times;
+            </button>
+        </div>
+
+        <div id="dialog-content" class="modal-body">
+            <!-- Dynamically populated by script.js -->
+        </div>
+
+        <div class="modal-footer">
+            <button id="close-details-footer"
+                    type="button"
+                    class="button primary">
+                Close Details
+            </button>
+        </div>
+    </dialog>
+
+    <!-- App Footer Landmark -->
+    <footer class="app-footer">
+        <div class="footer-inner">
+            <div>
+                <span><strong>Accessibility Findings Register</strong></span> ·
+                <span>RabTech Academy Internship — Task 03</span>
+            </div>
+            <nav aria-label="Footer Quick Links">
+                <ul class="footer-nav-list">
+                    <li><a href="index.html">Dashboard</a></li>
+                    <li><a href="findings.html">Findings</a></li>
+                    <li><a href="add-finding.html">Add Finding</a></li>
+                    <li><a href="documentation.html">Documentation</a></li>
+                </ul>
+            </nav>
+        </div>
+    </footer>
+
+</body>
+</html>
+

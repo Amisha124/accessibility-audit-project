@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Comprehensive audit documentation, WCAG 2.1 mapping, Lighthouse methodology, and screenshots for the National Portal of India audit.">
+    <title>Audit Documentation &amp; Methodology | RabTech Academy</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+
+    <a href="#main" class="skip-link">Skip to main content</a>
+
+    <!-- Top Application Header -->
+    <header class="app-header">
+        <div class="app-header-inner">
+            <a href="index.html" class="brand-wrapper" aria-label="Accessibility Audit Dashboard Home">
+                <div class="logo" aria-hidden="true">A</div>
+                <div class="brand-text">
+                    <p class="brand-tag">RabTech Academy · Task 03</p>
+                    <span class="brand-title">Accessibility Management</span>
+                </div>
+            </a>
+
+            <div class="header-actions">
+                <span class="status-badge">
+                    <span class="status-indicator-dot" aria-hidden="true"></span>
+                    Audit Reference
+                </span>
+
+                <button id="menu-toggle"
+                        type="button"
+                        class="menu-toggle"
+                        aria-expanded="false"
+                        aria-controls="app-sidebar"
+                        aria-label="Toggle navigation menu">
+                    <span class="menu-icon" aria-hidden="true">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Application Shell Layout -->
+    <div class="app-layout">
+
+        <!-- Mobile Backdrop Overlay -->
+        <div id="sidebar-backdrop" class="sidebar-backdrop" aria-hidden="true"></div>
+
+        <!-- Sidebar Navigation Landmark -->
+        <aside id="app-sidebar" class="app-sidebar" aria-label="Sidebar Navigation">
+            <div class="sidebar-nav-section">
+                <p class="sidebar-label">Navigation</p>
+                <nav class="sidebar-nav" aria-label="Primary Navigation">
+                    <ul class="sidebar-menu">
+                        <li>
+                            <a href="index.html" class="sidebar-link">
+                                <span class="icon" aria-hidden="true">📊</span>
+                                <span>Dashboard</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="findings.html" class="sidebar-link">
+                                <span class="icon" aria-hidden="true">📋</span>
+                                <span>Findings Register</span>
+                                <span class="nav-counter"><span class="nav-findings-count">5</span><span class="visually-hidden"> recorded findings</span></span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="add-finding.html" class="sidebar-link">
+                                <span class="icon" aria-hidden="true">➕</span>
+                                <span>Add New Finding</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="documentation.html" class="sidebar-link" aria-current="page">
+                                <span class="icon" aria-hidden="true">📖</span>
+                                <span>Audit Documentation</span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+
+            <div class="sidebar-footer">
+                <div class="sidebar-audit-card">
+                    <h3>Documentation</h3>
+                    <p>Methodology &amp; Standards</p>
+                    <div class="audit-meta-row">
+                        <span>Lighthouse Score</span>
+                        <span class="audit-score-pill">86 / 100</span>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content Area Landmark -->
+        <main id="main" class="app-main" tabindex="-1">
+            <div class="main-content-container">
+
+                <!-- Page Header Hero Section -->
+                <section class="page-hero" aria-labelledby="doc-hero-heading">
+                    <div class="hero-content">
+                        <p class="eyebrow">Technical Reference · Task 03</p>
+                        <h1 id="doc-hero-heading">Audit Documentation &amp; Methodology</h1>
+                        <p class="page-description">
+                            Comprehensive technical specifications, WCAG 2.1 Level AA mapping, automated Lighthouse
+                            scan parameters, and manual keyboard testing protocols for the National Portal of India.
+                        </p>
+                    </div>
+
+                    <div class="hero-actions">
+                        <a href="findings.html" class="button primary">
+                            Explore Findings →
+                        </a>
+                        <a href="accessibility-audit-template.csv" class="button secondary" download>
+                            Download CSV Register ↓
+                        </a>
+                    </div>
+                </section>
+
+                <!-- Section 1: Executive Overview & Target System -->
+                <section class="doc-section" aria-labelledby="overview-heading">
+                    <h2 id="overview-heading">1. Project Background &amp; Target System</h2>
+                    <p>
+                        This accessibility assessment was conducted as part of the RabTech Academy Internship
+                        (Task 03: Semantic HTML5 &amp; Accessible Component Architecture). The objective is to audit
+                        the digital accessibility posture of a public government portal, record baseline findings,
+                        and establish a professional accessibility management dashboard.
+                    </p>
+
+                    <div class="cards-grid">
+                        <article class="feature-card" aria-labelledby="target-title">
+                            <h3 id="target-title">Audited Target</h3>
+                            <p><strong>National Portal of India</strong><br>URL: <a href="https://www.india.gov.in/" target="_blank" rel="noopener noreferrer">https://www.india.gov.in/ ↗</a><br>Scope: Primary landing page and top navigation services.</p>
+                        </article>
+
+                        <article class="feature-card" aria-labelledby="baseline-score-title">
+                            <h3 id="baseline-score-title">Baseline Score</h3>
+                            <p><strong>86 / 100 (Lighthouse Accessibility)</strong><br>Engine: axe-core via Chrome DevTools Lighthouse.<br>Assessment: In Progress (Manual verification pending).</p>
+                        </article>
+
+                        <article class="feature-card" aria-labelledby="compliance-standard-title">
+                            <h3 id="compliance-standard-title">Evaluation Standard</h3>
+                            <p><strong>W3C WCAG 2.1 Level AA</strong><br>Four core principles: Perceivable, Operable, Understandable, and Robust (POUR).</p>
+                        </article>
+                    </div>
+                </section>
+
+                <!-- Section 2: Audit Methodology (Automated vs Manual) -->
+                <section class="doc-section" aria-labelledby="methodology-doc-heading">
+                    <h2 id="methodology-doc-heading">2. Testing Methodology: Automated vs. Manual</h2>
+                    <p>
+                        A balanced, enterprise accessibility audit combines automated scans with rigorous manual
+                        testing. Automated auditing tools reliably flag deterministic structural violations, but
+                        cannot evaluate context, reading order, screen reader pronunciation, or user task flow.
+                    </p>
+
+                    <div class="doc-comparison-grid">
+                        <div class="doc-card">
+                            <h3>Automated Lighthouse Scanning (30%–40% Coverage)</h3>
+                            <ul>
+                                <li>Evaluates color contrast ratios programmatically against WCAG 1.4.3 formulas.</li>
+                                <li>Detects missing required parent/child ARIA roles (e.g., <code>role="listitem"</code> without <code>role="list"</code>).</li>
+                                <li>Validates basic semantic nesting and missing alternative text on images.</li>
+                                <li>Flags interactive elements with insufficient touch targets or duplicate link names.</li>
+                            </ul>
+                        </div>
+
+                        <div class="doc-card">
+                            <h3>Manual Verification Protocol (60%–70% Coverage)</h3>
+                            <ul>
+                                <li><strong>Keyboard Navigation:</strong> Verify all interactive elements are reachable via <kbd>Tab</kbd> and navigable via <kbd>Shift+Tab</kbd>.</li>
+                                <li><strong>Focus Visibility:</strong> Ensure high-contrast visual focus indicators meet WCAG 2.4.7 and 2.4.11 criteria.</li>
+                                <li><strong>Screen Reader Auditing:</strong> Test with NVDA (Windows), JAWS, or VoiceOver for logical reading order and announcements.</li>
+                                <li><strong>Dynamic State Changes:</strong> Verify modals trap focus correctly and status updates announce politely via <code>aria-live</code>.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Section 3: Baseline Findings Breakdown & WCAG Criteria -->
+                <section class="doc-section" aria-labelledby="wcag-spec-heading">
+                    <h2 id="wcag-spec-heading">3. Baseline Findings &amp; Technical Analysis</h2>
+                    <p>
+                        The recorded Lighthouse audit of India.gov.in produced 5 initial baseline findings across 3
+                        WCAG principles. Below is the technical breakdown:
+                    </p>
+
+                    <ol class="methodology-steps">
+                        <li class="methodology-step-item">
+                            <span class="methodology-number" aria-hidden="true">01</span>
+                            <div class="methodology-step-body">
+                                <h3>WEB-001: ARIA Role Parent Relationship (WCAG 2.1 — 1.3.1 Info and Relationships)</h3>
+                                <p><strong>Component:</strong> Top Bar Service List (<code>div#topBarServiceList</code>).<br>
+                                   <strong>Root Cause:</strong> Elements assigned <code>role="listitem"</code> were not contained within an element with <code>role="list"</code>.<br>
+                                   <strong>Remediation:</strong> Replace customized ARIA divs with native semantic <code>&lt;ul&gt;</code> and <code>&lt;li&gt;</code> elements, or provide the required <code>role="list"</code> container.</p>
+                            </div>
+                        </li>
+
+                        <li class="methodology-step-item">
+                            <span class="methodology-number" aria-hidden="true">02</span>
+                            <div class="methodology-step-body">
+                                <h3>WEB-002: Insufficient Color Contrast (WCAG 2.1 — 1.4.3 Contrast Minimum)</h3>
+                                <p><strong>Component:</strong> Header Overlay Text ('Avail online Services &amp; Save time').<br>
+                                   <strong>Root Cause:</strong> Text overlay lacked sufficient contrast ratio against the background imagery or banner gradient.<br>
+                                   <strong>Remediation:</strong> Darken text or apply a solid background scrim to achieve at least 4.5:1 contrast for normal text.</p>
+                            </div>
+                        </li>
+
+                        <li class="methodology-step-item">
+                            <span class="methodology-number" aria-hidden="true">03</span>
+                            <div class="methodology-step-body">
+                                <h3>WEB-003: List Items Missing a Valid Parent (WCAG 2.1 — 1.3.1 Info and Relationships)</h3>
+                                <p><strong>Component:</strong> Website List Components.<br>
+                                   <strong>Root Cause:</strong> List items (<code>&lt;li&gt;</code>) were rendered without direct <code>&lt;ul&gt;</code>, <code>&lt;ol&gt;</code>, or <code>&lt;menu&gt;</code> parent elements.<br>
+                                   <strong>Remediation:</strong> Enclose all list items within proper semantic list container tags.</p>
+                            </div>
+                        </li>
+
+                        <li class="methodology-step-item">
+                            <span class="methodology-number" aria-hidden="true">04</span>
+                            <div class="methodology-step-body">
+                                <h3>WEB-004: Touch Target Size and Spacing (Needs Verification / Best Practice)</h3>
+                                <p><strong>Component:</strong> Interactive Controls.<br>
+                                   <strong>Root Cause:</strong> Flagged controls had active touch targets under 48x48 CSS pixels or insufficient spacing.<br>
+                                   <strong>Remediation:</strong> Expand hit area padding and ensure at least 8px separation between adjacent clickable controls.</p>
+                            </div>
+                        </li>
+
+                        <li class="methodology-step-item">
+                            <span class="methodology-number" aria-hidden="true">05</span>
+                            <div class="methodology-step-body">
+                                <h3>WEB-005: Repeated Links Require Review (WCAG 2.1 — 2.4.4 Link Purpose)</h3>
+                                <p><strong>Component:</strong> Repeated Links.<br>
+                                   <strong>Root Cause:</strong> Multiple links on the page share identical accessible names but navigate to different destinations.<br>
+                                   <strong>Remediation:</strong> Provide unique, context-descriptive link labels or use visually hidden text to disambiguate destinations.</p>
+                            </div>
+                        </li>
+                    </ol>
+                </section>
+
+                <!-- Section 4: Audit Evidence & Screenshots -->
+                <section class="doc-section" aria-labelledby="evidence-heading">
+                    <h2 id="evidence-heading">4. Audit Evidence &amp; Lighthouse Artifacts</h2>
+                    <p>
+                        Visual evidence captured during the Chrome DevTools Lighthouse audit of the National Portal of India:
+                    </p>
+
+                    <div class="screenshot-gallery">
+                        <figure class="screenshot-figure">
+                            <img src="screenshots/lighthouse-accessibility-score.png"
+                                 alt="Lighthouse report header displaying the Accessibility score of 86 out of 100 for the National Portal of India.">
+                            <figcaption>Figure 1: Recorded Lighthouse Accessibility Score of 86/100.</figcaption>
+                        </figure>
+
+                        <figure class="screenshot-figure">
+                            <img src="screenshots/lighthouse-accessibility-issues.png"
+                                 alt="Lighthouse audit issues section highlighting ARIA role parent errors and color contrast failures.">
+                            <figcaption>Figure 2: Lighthouse report identifying ARIA parent/child and contrast issues.</figcaption>
+                        </figure>
+
+                        <figure class="screenshot-figure">
+                            <img src="screenshots/accessibility-dashboard-overview.png"
+                                 alt="Initial accessibility audit dashboard layout with summary cards and findings table.">
+                            <figcaption>Figure 3: Initial baseline accessibility audit dashboard layout.</figcaption>
+                        </figure>
+                    </div>
+                </section>
+
+                <!-- Section 5: Accessible Component Architecture (Task 03 Principles) -->
+                <section class="doc-section" aria-labelledby="architecture-heading">
+                    <h2 id="architecture-heading">5. Accessible Component Architecture (Task 03)</h2>
+                    <p>
+                        This dashboard architecture implements best practices for semantic HTML5 and accessible web components:
+                    </p>
+
+                    <div class="doc-comparison-grid">
+                        <div class="doc-card">
+                            <h3>Semantic Document Landmarks</h3>
+                            <ul>
+                                <li><code>&lt;header&gt;</code>: Top-level branding and global application controls.</li>
+                                <li><code>&lt;nav&gt;</code>: Primary and sidebar navigation with explicit <code>aria-label</code> and <code>aria-current="page"</code>.</li>
+                                <li><code>&lt;aside&gt;</code>: Responsive sidebar navigation landmark.</li>
+                                <li><code>&lt;main id="main"&gt;</code>: Primary content landmark accessible via skip link.</li>
+                                <li><code>&lt;footer&gt;</code>: Consistent application footer with quick links and attribution.</li>
+                            </ul>
+                        </div>
+
+                        <div class="doc-card">
+                            <h3>Accessible Component Architecture</h3>
+                            <ul>
+                                <li><strong>Skip-to-Main Link:</strong> First focusable element on every page for keyboard and screen reader efficiency.</li>
+                                <li><strong>Native Modal Dialogs:</strong> Native <code>&lt;dialog&gt;</code> with focus trap, Escape key listener, and focus restoration to trigger elements.</li>
+                                <li><strong>Accessible Forms:</strong> Semantic <code>&lt;fieldset&gt;</code>, <code>&lt;legend&gt;</code>, explicit labels, error summary box with <code>role="alert"</code>, and live success banners.</li>
+                                <li><strong>W3C Validated HTML5:</strong> Strict adherence to HTML5 standards, zero syntax errors, and zero redundant ARIA roles.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="notice-box">
+                        <strong>Academic Disclaimer:</strong>
+                        This project is created strictly for educational purposes as part of RabTech Academy Internship Task 03.
+                        The findings documented herein represent baseline automated scans and student observations.
+                        This project does not modify, certify, or represent an official endorsement of the National Portal of India or any government agency.
+                    </div>
+                </section>
+
+            </div>
+        </main>
+    </div>
+
+    <!-- App Footer Landmark -->
+    <footer class="app-footer">
+        <div class="footer-inner">
+            <div>
+                <span><strong>Audit Documentation &amp; Methodology</strong></span> ·
+                <span>RabTech Academy Internship — Task 03</span>
+            </div>
+            <nav aria-label="Footer Quick Links">
+                <ul class="footer-nav-list">
+                    <li><a href="index.html">Dashboard</a></li>
+                    <li><a href="findings.html">Findings</a></li>
+                    <li><a href="add-finding.html">Add Finding</a></li>
+                    <li><a href="documentation.html">Documentation</a></li>
+                </ul>
+            </nav>
+        </div>
+    </footer>
+
+</body>
+</html>
+

@@ -1,256 +1,399 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <meta name="description" content="Accessibility audit dashboard documenting Lighthouse findings for the National Portal of India.">
-
-    <title>Accessibility Audit Dashboard</title>
-
+    <meta name="description" content="Enterprise Accessibility Audit Dashboard documenting baseline Lighthouse findings for the National Portal of India (Task 03).">
+    <title>Accessibility Audit Dashboard | RabTech Academy</title>
     <link rel="stylesheet" href="style.css">
     <script src="script.js" defer></script>
 </head>
-
 <body>
 
     <a href="#main" class="skip-link">Skip to main content</a>
 
-    <header class="header">
-        <div class="brand">
-            <div class="logo" aria-hidden="true">A</div>
-            <div>
-                <p class="eyebrow">WEB QUALITY / TASK 02</p>
-                <h1>Accessibility Audit</h1>
+    <!-- Top Application Header -->
+    <header class="app-header">
+        <div class="app-header-inner">
+            <a href="index.html" class="brand-wrapper" aria-label="Accessibility Audit Dashboard Home">
+                <div class="logo" aria-hidden="true">A</div>
+                <div class="brand-text">
+                    <p class="brand-tag">RabTech Academy · Task 03</p>
+                    <span class="brand-title">Accessibility Management</span>
+                </div>
+            </a>
+
+            <div class="header-actions">
+                <span class="status-badge">
+                    <span class="status-indicator-dot" aria-hidden="true"></span>
+                    Audit Baseline: India.gov.in
+                </span>
+
+                <button id="menu-toggle"
+                        type="button"
+                        class="menu-toggle"
+                        aria-expanded="false"
+                        aria-controls="app-sidebar"
+                        aria-label="Toggle navigation menu">
+                    <span class="menu-icon" aria-hidden="true">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </span>
+                </button>
             </div>
         </div>
-
-        <span class="status">● Audit Documentation</span>
     </header>
 
-    <main id="main" class="container">
+    <!-- Application Shell Layout -->
+    <div class="app-layout">
 
-        <section class="hero">
-            <div>
-                <p class="eyebrow teal">BASELINE ASSESSMENT</p>
-                <h2>Accessibility Overview</h2>
-                <p class="description">
-                    A structured record of potential accessibility barriers
-                    identified during a Lighthouse audit of the National
-                    Portal of India.
-                </p>
+        <!-- Mobile Backdrop Overlay -->
+        <div id="sidebar-backdrop" class="sidebar-backdrop" aria-hidden="true"></div>
+
+        <!-- Sidebar Navigation Landmark -->
+        <aside id="app-sidebar" class="app-sidebar" aria-label="Sidebar Navigation">
+            <div class="sidebar-nav-section">
+                <p class="sidebar-label">Navigation</p>
+                <nav class="sidebar-nav" aria-label="Primary Navigation">
+                    <ul class="sidebar-menu">
+                        <li>
+                            <a href="index.html" class="sidebar-link" aria-current="page">
+                                <span class="icon" aria-hidden="true">📊</span>
+                                <span>Dashboard</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="findings.html" class="sidebar-link">
+                                <span class="icon" aria-hidden="true">📋</span>
+                                <span>Findings Register</span>
+                                <span class="nav-counter"><span class="nav-findings-count">5</span><span class="visually-hidden"> recorded findings</span></span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="add-finding.html" class="sidebar-link">
+                                <span class="icon" aria-hidden="true">➕</span>
+                                <span>Add New Finding</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="documentation.html" class="sidebar-link">
+                                <span class="icon" aria-hidden="true">📖</span>
+                                <span>Audit Documentation</span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
             </div>
 
-            <a class="button secondary"
-               href="https://www.india.gov.in/"
-               target="_blank"
-               rel="noopener noreferrer">
-                Open Audited Website ↗
-            </a>
-        </section>
-
-        <section class="stats" aria-label="Audit summary">
-
-            <article class="stat score-card">
-                <p class="stat-label">Accessibility Score</p>
-                <div class="score">86<span>/100</span></div>
-                <div class="progress">
-                    <div class="progress-fill"></div>
+            <div class="sidebar-footer">
+                <div class="sidebar-audit-card">
+                    <h3>Baseline Target</h3>
+                    <p>National Portal of India</p>
+                    <div class="audit-meta-row">
+                        <span>Lighthouse Score</span>
+                        <span class="audit-score-pill">86 / 100</span>
+                    </div>
                 </div>
-                <p class="small">Recorded Lighthouse result</p>
-            </article>
+            </div>
+        </aside>
 
-            <article class="stat">
-                <p class="stat-label">Recorded Findings</p>
-                <h3 id="total-findings">5</h3>
-                <p class="small">Potential accessibility issues</p>
-            </article>
+        <!-- Main Content Area Landmark -->
+        <main id="main" class="app-main" tabindex="-1">
+            <div class="main-content-container">
 
-            <article class="stat">
-                <p class="stat-label">Needs Verification</p>
-                <h3 id="verification-count">2</h3>
-                <p class="small">Manual review recommended</p>
-            </article>
+                <!-- Page Header Hero Section -->
+                <section class="page-hero" aria-labelledby="dashboard-overview-heading">
+                    <div class="hero-content">
+                        <p class="eyebrow">Enterprise Overview · Task 03</p>
+                        <h1 id="dashboard-overview-heading">Accessibility Audit Dashboard</h1>
+                        <p class="page-description">
+                            A structured, multi-page accessibility management workspace documenting recorded
+                            Lighthouse baseline findings for the National Portal of India. Explore recorded findings,
+                            log new audit issues, and review WCAG 2.1 compliance documentation.
+                        </p>
+                    </div>
 
-            <article class="stat">
-                <p class="stat-label">Audit Status</p>
-                <h3 class="in-progress">In Progress</h3>
-                <p class="small">Review and evidence pending</p>
-            </article>
+                    <div class="hero-actions">
+                        <a class="button secondary"
+                           href="https://www.india.gov.in/"
+                           target="_blank"
+                           rel="noopener noreferrer"
+                           aria-label="Open audited National Portal of India website in new tab">
+                            Audited Website ↗
+                        </a>
+                        <a class="button primary" href="findings.html">
+                            Explore Findings →
+                        </a>
+                    </div>
+                </section>
 
-        </section>
+                <!-- High-Level Statistics & Metrics Section -->
+                <section class="panel" aria-labelledby="audit-summary-heading">
+                    <div class="panel-header">
+                        <div class="panel-title-group">
+                            <p class="eyebrow">Audit Metrics</p>
+                            <h2 id="audit-summary-heading">Executive Summary</h2>
+                        </div>
+                    </div>
 
-        <section class="panel">
+                    <div class="stats-grid">
+                        <article class="stat-card" aria-labelledby="stat-score-title">
+                            <div class="stat-header">
+                                <h3 id="stat-score-title" class="stat-label">Lighthouse Score</h3>
+                                <span class="badge verify">Automated</span>
+                            </div>
+                            <div class="score-display">86<span>/100</span></div>
+                            <div class="progress-bar-container" role="progressbar" aria-valuenow="86" aria-valuemin="0" aria-valuemax="100" aria-label="Lighthouse Accessibility Score: 86 out of 100">
+                                <div class="progress-bar-fill" style="width: 86%;"></div>
+                            </div>
+                            <p class="stat-subtext">Recorded baseline audit result</p>
+                        </article>
 
-            <div class="section-heading">
-                <div>
-                    <p class="eyebrow">ISSUE REGISTER</p>
-                    <h2>Accessibility Findings</h2>
-                    <p class="description">
-                        Search findings, filter by status and priority,
-                        and review recommended fixes.
+                        <article class="stat-card" aria-labelledby="stat-findings-title">
+                            <div class="stat-header">
+                                <h3 id="stat-findings-title" class="stat-label">Recorded Findings</h3>
+                                <span class="badge in-progress">Registered</span>
+                            </div>
+                            <div class="stat-metric" id="total-findings">5</div>
+                            <p class="stat-subtext">Identified accessibility barriers</p>
+                        </article>
+
+                        <article class="stat-card" aria-labelledby="stat-verify-title">
+                            <div class="stat-header">
+                                <h3 id="stat-verify-title" class="stat-label">Needs Verification</h3>
+                                <span class="badge verify">Manual Check</span>
+                            </div>
+                            <div class="stat-metric text-amber" id="verification-count">2</div>
+                            <p class="stat-subtext">Manual review recommended</p>
+                        </article>
+
+                        <article class="stat-card" aria-labelledby="stat-status-title">
+                            <div class="stat-header">
+                                <h3 id="stat-status-title" class="stat-label">Audit Phase</h3>
+                                <span class="badge open">Active</span>
+                            </div>
+                            <div class="stat-metric text-status">In Progress</div>
+                            <p class="stat-subtext">Evidence & remediation pending</p>
+                        </article>
+                    </div>
+                </section>
+
+                <!-- Navigation Hub / Key Workflow Cards -->
+                <section aria-labelledby="quick-actions-heading">
+                    <h2 id="quick-actions-heading" class="visually-hidden">Quick Actions and Navigation</h2>
+                    <div class="cards-grid">
+                        <article class="feature-card" aria-labelledby="feature-findings-title">
+                            <div class="feature-card-icon" aria-hidden="true">📋</div>
+                            <h3 id="feature-findings-title">Findings Register</h3>
+                            <p>Filter, search, and review all 5 recorded accessibility findings with full WCAG 2.1 mapping and remediation guides.</p>
+                            <a href="findings.html" class="button outline-teal">View Findings Register →</a>
+                        </article>
+
+                        <article class="feature-card" aria-labelledby="feature-add-title">
+                            <div class="feature-card-icon" aria-hidden="true">➕</div>
+                            <h3 id="feature-add-title">Add New Finding</h3>
+                            <p>Log a newly discovered accessibility barrier with accessible forms, real-time validation, and instant persistence.</p>
+                            <a href="add-finding.html" class="button primary">Add New Finding →</a>
+                        </article>
+
+                        <article class="feature-card" aria-labelledby="feature-docs-title">
+                            <div class="feature-card-icon" aria-hidden="true">📖</div>
+                            <h3 id="feature-docs-title">Audit Documentation</h3>
+                            <p>Review the comprehensive testing methodology, Lighthouse score breakdown, and manual keyboard testing protocols.</p>
+                            <a href="documentation.html" class="button secondary">Read Documentation →</a>
+                        </article>
+                    </div>
+                </section>
+
+                <!-- Interactive Findings Preview Section -->
+                <section class="panel" aria-labelledby="findings-table-heading">
+                    <div class="panel-header">
+                        <div class="panel-title-group">
+                            <p class="eyebrow">Issue Register Preview</p>
+                            <h2 id="findings-table-heading">Recorded Accessibility Findings</h2>
+                            <p>Search, filter, and inspect baseline issues documented from the Lighthouse audit.</p>
+                        </div>
+
+                        <div class="hero-actions">
+                            <a class="button secondary" href="accessibility-audit-template.csv" download>
+                                Download Template CSV ↓
+                            </a>
+                            <a class="button primary" href="findings.html">
+                                Full Findings Page →
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Filter Toolbar -->
+                    <div class="table-toolbar">
+                        <div class="search-field-wrapper">
+                            <span class="search-icon" aria-hidden="true">⌕</span>
+                            <label for="search-input" class="visually-hidden">Search recorded findings</label>
+                            <input id="search-input"
+                                   class="search-input"
+                                   type="search"
+                                   placeholder="Search issues, components, or WCAG criteria...">
+                        </div>
+
+                        <div class="filter-group">
+                            <label for="status-filter" class="filter-label">Status</label>
+                            <select id="status-filter" class="filter-select">
+                                <option value="all">All Statuses</option>
+                                <option value="Open">Open</option>
+                                <option value="Needs verification">Needs Verification</option>
+                                <option value="In Progress">In Progress</option>
+                                <option value="Resolved">Resolved</option>
+                            </select>
+                        </div>
+
+                        <div class="filter-group">
+                            <label for="priority-filter" class="filter-label">Priority</label>
+                            <select id="priority-filter" class="filter-select">
+                                <option value="all">All Priorities</option>
+                                <option value="High">High</option>
+                                <option value="Medium">Medium</option>
+                                <option value="Low">Low</option>
+                            </select>
+                        </div>
+
+                        <button id="reset-filters" type="button" class="reset-filters-btn">
+                            Reset Filters
+                        </button>
+                    </div>
+
+                    <!-- Accessible Findings Data Table -->
+                    <div class="table-responsive-wrapper" role="region" aria-label="Accessibility findings table" tabindex="0">
+                        <table class="data-table">
+                            <caption class="visually-hidden">
+                                Recorded accessibility findings, affected components, WCAG criteria, priorities, and statuses
+                            </caption>
+                            <thead>
+                                <tr>
+                                    <th scope="col">Issue ID &amp; Title</th>
+                                    <th scope="col">Component / WCAG Reference</th>
+                                    <th scope="col">Priority</th>
+                                    <th scope="col">Status</th>
+                                    <th scope="col">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="findings-table">
+                                <tr>
+                                    <td colspan="5" class="empty-state-row">Loading recorded findings...</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <p id="results-count" class="table-results-counter" aria-live="polite">
+                        Showing 5 recorded findings
                     </p>
+                </section>
+
+                <!-- Audit Methodology & Action Plan Grid -->
+                <div class="cards-grid">
+                    <section class="panel" aria-labelledby="methodology-heading">
+                        <p class="eyebrow">Audit Workflow</p>
+                        <h2 id="methodology-heading">How the Audit Was Conducted</h2>
+                        <ol class="methodology-steps">
+                            <li class="methodology-step-item">
+                                <span class="methodology-number" aria-hidden="true">01</span>
+                                <div class="methodology-step-body">
+                                    <h3>Automated Lighthouse Scan</h3>
+                                    <p>Chrome DevTools Lighthouse was run against India.gov.in evaluating the Accessibility category to capture the baseline score of 86.</p>
+                                </div>
+                            </li>
+                            <li class="methodology-step-item">
+                                <span class="methodology-number" aria-hidden="true">02</span>
+                                <div class="methodology-step-body">
+                                    <h3>Document &amp; Categorize</h3>
+                                    <p>Identified barriers were logged in an issue register with WCAG success criteria mappings and severity classifications.</p>
+                                </div>
+                            </li>
+                            <li class="methodology-step-item">
+                                <span class="methodology-number" aria-hidden="true">03</span>
+                                <div class="methodology-step-body">
+                                    <h3>Manual Verification Plan</h3>
+                                    <p>Automated tools detect ~30-40% of WCAG issues. Manual keyboard navigation and assistive technology verification are scheduled.</p>
+                                </div>
+                            </li>
+                        </ol>
+                    </section>
+
+                    <section class="panel" aria-labelledby="next-actions-heading">
+                        <p class="eyebrow">Recommended Next Steps</p>
+                        <h2 id="next-actions-heading">Action Plan &amp; Notice</h2>
+                        <ul class="methodology-steps">
+                            <li class="methodology-step-item">
+                                <span class="methodology-number" aria-hidden="true">✓</span>
+                                <div class="methodology-step-body">
+                                    <h3>Verify Identified Controls</h3>
+                                    <p>Inspect touch targets and repeated link purposes on desktop and mobile devices.</p>
+                                </div>
+                            </li>
+                            <li class="methodology-step-item">
+                                <span class="methodology-number" aria-hidden="true">✓</span>
+                                <div class="methodology-step-body">
+                                    <h3>Validate Remediation Markup</h3>
+                                    <p>Ensure semantic list containers (ul, ol) and valid ARIA structures are implemented.</p>
+                                </div>
+                            </li>
+                        </ul>
+
+                        <div class="notice-box">
+                            <strong>Audit Scope Notice:</strong>
+                            This dashboard documents an academic accessibility audit baseline for RabTech Academy Task 03.
+                            It represents recorded observations and does not alter or certify the official government portal.
+                        </div>
+                    </section>
                 </div>
 
-                <a class="button primary"
-                   href="accessibility-audit-template.csv"
-                   download>
-                    Download CSV ↓
-                </a>
             </div>
+        </main>
+    </div>
 
-            <div class="filters">
-
-                <label class="search-box">
-                    <span aria-hidden="true">⌕</span>
-                    <span class="visually-hidden">Search findings</span>
-                    <input id="search-input"
-                           type="search"
-                           placeholder="Search issues or components...">
-                </label>
-
-                <label for="status-filter">Status</label>
-                <select id="status-filter">
-                    <option value="all">All Statuses</option>
-                    <option value="Open">Open</option>
-                    <option value="Needs verification">Needs Verification</option>
-                </select>
-
-                <label for="priority-filter">Priority</label>
-                <select id="priority-filter">
-                    <option value="all">All Priorities</option>
-                    <option value="High">High</option>
-                    <option value="Medium">Medium</option>
-                </select>
-
-            </div>
-
-            <div class="table-container">
-                <table>
-                    <caption class="visually-hidden">
-                        Accessibility findings, priorities and statuses
-                    </caption>
-
-                    <thead>
-                        <tr>
-                            <th scope="col">Issue</th>
-                            <th scope="col">Component / WCAG</th>
-                            <th scope="col">Priority</th>
-                            <th scope="col">Status</th>
-                            <th scope="col">Details</th>
-                        </tr>
-                    </thead>
-
-                    <tbody id="findings-table">
-                        <tr>
-                            <td colspan="5">Loading findings...</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-
-            <p id="results-count" class="small" aria-live="polite">
-                Showing 5 findings
-            </p>
-
-        </section>
-
-        <section class="bottom-grid">
-
-            <article class="panel">
-                <p class="eyebrow">METHODOLOGY</p>
-                <h2>How the Audit Was Conducted</h2>
-
-                <ol class="steps">
-                    <li>
-                        <span class="step-number">01</span>
-                        <div>
-                            <h3>Automated Scan</h3>
-                            <p>
-                                Chrome DevTools Lighthouse was run with
-                                the Accessibility category enabled.
-                            </p>
-                        </div>
-                    </li>
-
-                    <li>
-                        <span class="step-number">02</span>
-                        <div>
-                            <h3>Document Findings</h3>
-                            <p>
-                                Potential issues were recorded in a CSV
-                                issue register.
-                            </p>
-                        </div>
-                    </li>
-
-                    <li>
-                        <span class="step-number">03</span>
-                        <div>
-                            <h3>Manual Verification</h3>
-                            <p>
-                                Keyboard navigation, focus visibility
-                                and assistive technology behaviour
-                                require additional testing.
-                            </p>
-                        </div>
-                    </li>
-                </ol>
-            </article>
-
-            <article class="panel">
-                <p class="eyebrow">NEXT ACTIONS</p>
-                <h2>Recommended Workflow</h2>
-
-                <ul class="checklist">
-                    <li>Verify the findings on the live website.</li>
-                    <li>Capture screenshots of affected elements.</li>
-                    <li>Complete evidence and remediation details.</li>
-                    <li>Document the architecture in README.md.</li>
-                    <li>Upload the project to a public GitHub repository.</li>
-                </ul>
-
-                <div class="notice">
-                    <strong>Important:</strong>
-                    This dashboard documents an accessibility audit.
-                    It does not modify or certify the government website.
-                </div>
-            </article>
-
-        </section>
-
-        <footer>
-            <span>Accessibility Audit Dashboard</span>
-            <span>HTML · CSS · JavaScript</span>
-        </footer>
-
-    </main>
-
-    <dialog id="details-dialog" aria-labelledby="dialog-title">
-
-        <div class="dialog-header">
+    <!-- Reusable Accessible Modal Dialog for Finding Details -->
+    <dialog id="details-dialog" class="details-modal" aria-labelledby="dialog-title">
+        <div class="modal-header">
             <h2 id="dialog-title">Finding Details</h2>
-
             <button id="close-dialog"
                     type="button"
-                    aria-label="Close details">
-                ×
+                    class="modal-close-btn"
+                    aria-label="Close details dialog">
+                &times;
             </button>
         </div>
 
-        <div id="dialog-content" class="dialog-content"></div>
+        <div id="dialog-content" class="modal-body">
+            <!-- Dynamically populated by script.js -->
+        </div>
 
-        <div class="dialog-footer">
-            <button id="close-details"
+        <div class="modal-footer">
+            <button id="close-details-footer"
                     type="button"
                     class="button primary">
                 Close Details
             </button>
         </div>
-
     </dialog>
+
+    <!-- App Footer Landmark -->
+    <footer class="app-footer">
+        <div class="footer-inner">
+            <div>
+                <span><strong>Accessibility Audit Management Dashboard</strong></span> ·
+                <span>RabTech Academy Internship — Task 03</span>
+            </div>
+            <nav aria-label="Footer Quick Links">
+                <ul class="footer-nav-list">
+                    <li><a href="index.html">Dashboard</a></li>
+                    <li><a href="findings.html">Findings</a></li>
+                    <li><a href="add-finding.html">Add Finding</a></li>
+                    <li><a href="documentation.html">Documentation</a></li>
+                </ul>
+            </nav>
+        </div>
+    </footer>
 
 </body>
 </html>
-```
